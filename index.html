@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeVita 20-Day Plan · Padho with Pratyush</title>
+  <meta name="description" content="TCS CodeVita Season 14 — a day-wise 20-day preparation plan with videos, previous-year questions and mock tests. By Padho with Pratyush.">
+  <meta property="og:title" content="TCS CodeVita Season 14 — 20-Day Plan">
+  <meta property="og:description" content="Day-wise videos, PYQs and mock tests to crack TCS CodeVita. Free, by Padho with Pratyush.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5b301'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='%230b1530'%3E20%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="#top"><span class="logo">20</span><span>Padho with Pratyush</span></a>
+      <nav class="nav">
+        <a href="#exam">Exam</a>
+        <a href="#plan">Plan</a>
+        <a href="#pyq">PYQs</a>
+        <a href="#mocks">Mocks</a>
+        <a href="#checklist">Exam day</a>
+      </nav>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">TCS CodeVita · Season 14</p>
+          <h1>Crack CodeVita in <span class="hl">20 days</span>.</h1>
+          <p class="lede">A day-wise plan built from the Padho with Pratyush DSA playlists, real CodeVita previous-year questions and three full 3-hour mock tests. Watch in order, solve in order, tick things off — your progress saves in this browser.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#plan">Start the plan</a>
+            <a class="btn ghost" href="https://codevita.tcsapps.com/" target="_blank" rel="noopener">Register on the portal ↗</a>
+          </div>
+        </div>
+        <aside class="count-card" aria-live="polite">
+          <p class="count-label">Registration closes in</p>
+          <div class="count" id="countdown">—</div>
+          <p class="count-sub">13 Nov 2026 · confirm on the official portal</p>
+          <div class="divider"></div>
+          <div class="progress-block">
+            <div class="progress-head"><span>Your progress</span><strong id="progressPct">0%</strong></div>
+            <div class="bar"><span id="progressBar"></span></div>
+            <p class="count-sub" id="progressText">0 of 0 items done</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- EXAM -->
+    <section id="exam" class="section">
+      <div class="wrap">
+        <h2>The exam at a glance</h2>
+        <p class="section-sub">From the official CodeVita portal. Round dates aren't published yet — <span id="lastChecked"></span>.</p>
+        <div class="facts" id="facts"></div>
+
+        <div class="two-col">
+          <div>
+            <h3>Timeline</h3>
+            <ol class="timeline" id="timeline"></ol>
+          </div>
+          <div>
+            <h3>Rules that catch people out</h3>
+            <ul class="rules" id="rules"></ul>
+            <div class="callout">
+              <strong>What CodeVita questions look like:</strong> long story-style statements, custom input formats (often comma-separated), strict output formatting, and a huge difficulty spread inside one set. Reading carefully is half the exam.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAN -->
+    <section id="plan" class="section alt">
+      <div class="wrap">
+        <div class="plan-head">
+          <div>
+            <h2>The 20-day plan</h2>
+            <p class="section-sub">≈ 1.5–2 h of videos + 3–4 h of problems per day. Videos are listed in the order to watch.</p>
+          </div>
+          <div class="plan-controls">
+            <label class="field">
+              <span>My start date</span>
+              <input type="date" id="startDate">
+            </label>
+            <button class="btn small" id="todayBtn">Jump to today</button>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" id="phaseTabs"></div>
+        <div class="legend">
+          <span class="tag pyq">PYQ</span> CodeVita previous-year
+          <span class="tag official">Official</span> sample on CodeVita portal
+          <span class="tag lc">LeetCode</span>
+          <span class="tag other">Other judge</span>
+          <span class="tag mock">Mock</span>
+        </div>
+
+        <div class="days" id="days"></div>
+
+        <div class="reset-row">
+          <button class="btn ghost small" id="resetBtn">Reset my progress</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PYQ BANK -->
+    <section id="pyq" class="section">
+      <div class="wrap">
+        <h2>CodeVita question bank</h2>
+        <p class="section-sub">Every previous-year and official sample question used in this plan, with the day it appears on.</p>
+        <div class="pyq-filter">
+          <input type="search" id="pyqSearch" placeholder="Search by name or topic…" aria-label="Search questions">
+        </div>
+        <div class="table-wrap">
+          <table class="pyq-table">
+            <thead><tr><th>Question</th><th>Source</th><th>Topic</th><th>Level</th><th>Day</th></tr></thead>
+            <tbody id="pyqBody"></tbody>
+          </table>
+        </div>
+        <p class="note">Previous-year statements are collected on <a href="https://www.lets-code.co.in/previousyearcodingquestion/tcs-codevita-previous-year-coding-questions/" target="_blank" rel="noopener">Let's Code</a>; official samples live on the <a href="https://codevita.tcsapps.com/" target="_blank" rel="noopener">CodeVita portal</a> (scroll to "Sample Questions"). Neither has a judge — test with the sample cases and your own edge cases.</p>
+      </div>
+    </section>
+
+    <!-- MOCKS -->
+    <section id="mocks" class="section alt">
+      <div class="wrap">
+        <h2>Mock tests</h2>
+        <p class="section-sub">Three full simulations at 3 hours each — the new Season 14 round length.</p>
+        <div class="mock-grid" id="mockGrid"></div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section id="checklist" class="section">
+      <div class="wrap narrow">
+        <h2>Exam-day checklist</h2>
+        <ul class="checklist" id="checklistList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-in">
+      <p>Made by <a href="https://www.youtube.com/@padho_with_pratyush" target="_blank" rel="noopener">Padho with Pratyush</a> · Free, and always will be.</p>
+      <p class="muted">Not affiliated with TCS. Dates and rules can change — the <a href="https://codevita.tcsapps.com/" target="_blank" rel="noopener">official portal</a> is the source of truth.</p>
+    </div>
+  </footer>
+
+  <script src="plan.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
