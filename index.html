@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CodeVita 20-Day Plan · Padho with Pratyush</title>
-  <meta name="description" content="TCS CodeVita Season 14 — a day-wise 20-day preparation plan with videos, previous-year questions and mock tests. By Padho with Pratyush.">
-  <meta property="og:title" content="TCS CodeVita Season 14 — 20-Day Plan">
+  <title>CodeVita 8-Week Plan · Padho with Pratyush</title>
+  <meta name="description" content="TCS CodeVita Season 14 — a relaxed 8-week (56-day) preparation plan with videos, previous-year questions and mock tests. By Padho with Pratyush.">
+  <meta property="og:title" content="TCS CodeVita Season 14 — 8-Week Plan">
   <meta property="og:description" content="Day-wise videos, PYQs and mock tests to crack TCS CodeVita. Free, by Padho with Pratyush.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5b301'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='%230b1530'%3E20%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5b301'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='%230b1530'%3ECV%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -16,12 +16,13 @@
 <body>
   <header class="topbar">
     <div class="wrap topbar-in">
-      <a class="brand" href="#top"><span class="logo">20</span><span>Padho with Pratyush</span></a>
+      <a class="brand" href="#top"><span class="logo">CV</span><span>Padho with Pratyush</span></a>
       <nav class="nav">
         <a href="#exam">Exam</a>
         <a href="#plan">Plan</a>
         <a href="#pyq">PYQs</a>
         <a href="#mocks">Mocks</a>
+        <a href="#bonus">Bonus</a>
         <a href="#checklist">Exam day</a>
       </nav>
       <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
@@ -36,8 +37,8 @@
       <div class="wrap hero-grid">
         <div>
           <p class="eyebrow">TCS CodeVita · Season 14</p>
-          <h1>Crack CodeVita in <span class="hl">20 days</span>.</h1>
-          <p class="lede">A day-wise plan built from the Padho with Pratyush DSA playlists, real CodeVita previous-year questions and three full 3-hour mock tests. Watch in order, solve in order, tick things off — your progress saves in this browser.</p>
+          <h1>Crack CodeVita in <span class="hl">8 relaxed weeks</span>.</h1>
+          <p class="lede">A 56-day plan built from the Padho with Pratyush DSA playlists, real CodeVita previous-year questions and five full 3-hour mocks. About 2.5–3 hours a day, a rest day every week, and nothing you can't finish. Tick things off — your progress saves in this browser.</p>
           <div class="cta-row">
             <a class="btn primary" href="#plan">Start the plan</a>
             <a class="btn ghost" href="https://codevita.tcsapps.com/" target="_blank" rel="noopener">Register on the portal ↗</a>
@@ -85,18 +86,23 @@
       <div class="wrap">
         <div class="plan-head">
           <div>
-            <h2>The 20-day plan</h2>
-            <p class="section-sub">≈ 1.5–2 h of videos + 3–4 h of problems per day. Videos are listed in the order to watch.</p>
+            <h2>The 8-week plan</h2>
+            <p class="section-sub">Each week: 5 learning days, 1 weekend practice or mock, 1 rest day. ~1.5 h of videos + ~1.5 h of problems on learning days. Items marked <em>stretch</em> are optional.</p>
           </div>
           <div class="plan-controls">
             <label class="field">
               <span>My start date</span>
               <input type="date" id="startDate">
             </label>
+            <label class="field">
+              <span>Round 1 date (when announced)</span>
+              <input type="date" id="examDate">
+            </label>
             <button class="btn small" id="todayBtn">Jump to today</button>
           </div>
         </div>
 
+        <div class="fit-note" id="fitNote" hidden></div>
         <div class="tabs" role="tablist" id="phaseTabs"></div>
         <div class="legend">
           <span class="tag pyq">PYQ</span> CodeVita previous-year
@@ -104,6 +110,7 @@
           <span class="tag lc">LeetCode</span>
           <span class="tag other">Other judge</span>
           <span class="tag mock">Mock</span>
+          <span class="tag stretch">Stretch</span> optional
         </div>
 
         <div class="days" id="days"></div>
@@ -136,13 +143,22 @@
     <section id="mocks" class="section alt">
       <div class="wrap">
         <h2>Mock tests</h2>
-        <p class="section-sub">Three full simulations at 3 hours each — the new Season 14 round length.</p>
+        <p class="section-sub">Weekend practice in weeks 1–3, then five full 3-hour simulations — the new Season 14 round length.</p>
         <div class="mock-grid" id="mockGrid"></div>
       </div>
     </section>
 
+    <!-- BONUS -->
+    <section id="bonus" class="section">
+      <div class="wrap">
+        <h2>Bonus videos</h2>
+        <p class="section-sub">More from the channel that isn't in the daily plan — use your rest days or watch after the exam.</p>
+        <div class="bonus-grid" id="bonusGrid"></div>
+      </div>
+    </section>
+
     <!-- CHECKLIST -->
-    <section id="checklist" class="section">
+    <section id="checklist" class="section alt">
       <div class="wrap narrow">
         <h2>Exam-day checklist</h2>
         <ul class="checklist" id="checklistList"></ul>
